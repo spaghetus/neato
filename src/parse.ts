@@ -14,6 +14,9 @@ export default async function parse(message: Message) {
 				await filter(message);
 			} else if (/\[.*neato null.*]/.test(message.channel.topic)) {
 				await message.delete();
+			} else if (/\[.*neato cringle.*]/.test(message.channel.topic)) {
+				const emoji = message.guild.emojis.cache.find(emoji => emoji.name === 'cringle');
+				await message.react(emoji);
 			} else {
 				await message.channel.send('I\'m not sure what this channel is for.');
 			}
